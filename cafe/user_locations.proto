@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "genproto/cafe";
+
+package cafe;
+
+import "common2.proto";
+
+service UserLocationsService{
+    rpc Create(UserLocationsCreateReq) returns(Void);
+    rpc GetById(ById) returns(UserLocationsRes);
+    rpc GetAll(UserLocationsGetAllReq) returns(UserLocationsGetAllRes);
+    rpc Update(UserLocationsRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message UserLocationsRes{
+    string id = 1;
+    Location location = 2;
+}
+
+message UserLocationsCreateReq{
+    Location location = 1;
+}
+
+message UserLocationsGetAllRes{
+    repeated UserLocationsRes locations = 1;
+    int32 count = 2;
+}
+
+message UserLocationsGetAllReq{
+    Filter filter = 1;
+    string user_id = 2;
+}
