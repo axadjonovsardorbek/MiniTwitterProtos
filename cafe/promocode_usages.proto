@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "genproto/cafe";
+
+package cafe;
+
+import "common2.proto";
+
+service PromocodeUsagesService{
+    rpc Create(PromocodeUsagesCreateReq) returns(ById);
+    rpc GetById(ById) returns(PromocodeUsagesRes);
+    rpc GetAll(PromocodeUsagesGetAllReq) returns(PromocodeUsagesGetAllRes);
+    rpc Update(PromocodeUsagesRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message PromocodeUsagesRes{
+    string id = 1;
+    string user_id = 2;
+    string promocode_id = 3;
+    int32 usage_count = 4;
+}
+
+message PromocodeUsagesCreateReq{
+    string user_id = 1;
+    string promocode_id = 2;
+    int32 usage_count = 3;
+}
+
+message PromocodeUsagesGetAllReq{
+    string user_id = 1;
+    Filter filter = 3;
+}
+
+message PromocodeUsagesGetAllRes{
+    repeated PromocodeUsagesRes promocode_usages = 1;
+    int32 count = 2;
+}

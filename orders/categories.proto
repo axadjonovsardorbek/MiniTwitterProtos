@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "genproto/orders";
+
+package orders;
+
+import "common3.proto";
+
+service CategoriesService{
+    rpc Create(CategoriesCreateReq) returns(ById);
+    rpc GetById(ById) returns(CategoriesRes);
+    rpc GetAll(CategoriesGetAllReq) returns(CategoriesGetAllRes);
+    rpc Update(CategoriesRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message CategoriesRes{
+    string id = 1;
+    string name = 2;
+}
+
+message CategoriesCreateReq{
+    string name = 1;
+}
+
+message CategoriesGetAllReq{
+    string name = 1;
+    Filter filter = 2;
+}
+
+message CategoriesGetAllRes{
+    repeated CategoriesRes categories = 1;
+    int32 count = 2;
+}

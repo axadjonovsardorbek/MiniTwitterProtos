@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "genproto/cafe";
+
+package cafe;
+
+import "common2.proto";
+
+service UserCardsService{
+    rpc Create(UserCardsCreateReq) returns(Void);
+    rpc GetById(ById) returns(UserCardsRes);
+    rpc GetAll(UserCardsGetAllReq) returns(UserCardsGetAllRes);
+    rpc Update(UserCardsRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message UserCardsRes{
+    string id = 1;
+    string user_id = 2;
+    string card_number = 3;
+    string card_holder_name = 4;
+    string expiration_date = 5;
+    string cvv = 6;
+    string type = 7;
+}
+
+message UserCardsCreateReq{
+    string user_id = 1;
+    string card_number = 2;
+    string card_holder_name = 3;
+    string expiration_date = 4;
+    string cvv = 5;
+    string type = 6;
+}
+
+message UserCardsGetAllRes{
+    repeated UserCardsRes user_cards = 1;
+    int32 count = 2;
+}
+
+message UserCardsGetAllReq{
+    Filter filter = 1;
+    string user_id = 2;
+}

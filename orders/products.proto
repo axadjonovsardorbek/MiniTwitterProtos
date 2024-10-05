@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "genproto/orders";
+
+package orders;
+
+import "common3.proto";
+
+service ProductsService{
+    rpc Create(ProductsCreateReq) returns(ById);
+    rpc GetById(ById) returns(ProductsRes);
+    rpc GetAll(ProductsGetAllReq) returns(ProductsGetAllRes);
+    rpc Update(ProductsRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message ProductsRes{
+    string id = 1;
+    string category_id = 2;
+    string name = 3;
+    string description = 4;
+    int32 price = 5;
+    string image_url = 6;
+}
+
+message ProductsCreateReq{
+    string category_id = 1;
+    string name = 2;
+    string description = 3;
+    int32 price = 4;
+    string image_url = 5;
+}
+
+message ProductsGetAllReq{
+    string category_id = 1;
+    string name = 2;
+    Filter filter = 3;
+}
+
+message ProductsGetAllRes{
+    repeated ProductsRes products = 1;
+    int32 count = 2;
+}

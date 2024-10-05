@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "genproto/orders";
+
+package orders;
+
+import "common3.proto";
+
+service CartsService{
+    rpc Create(CartsCreateReq) returns(Void);
+    rpc GetById(ById) returns(CartsRes);
+    rpc GetAll(CartsGetAllReq) returns(CartsGetAllRes);
+    rpc Update(CartsUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message CartsRes{
+    string id = 1;
+    string user_id = 2;
+    int64 total_amount = 3;
+}
+
+message CartsCreateReq{
+    string user_id = 1;
+    int64 total_amount = 2;
+}
+
+message CartsGetAllRes{
+    repeated CartsRes carts = 1;
+    int32 count = 2;
+}
+
+message CartsUpdateReq{
+    string id = 1;
+    int64 total_amount = 2;
+    string user_id = 3;
+}
+
+message CartsGetAllReq{
+    string user_id = 1;
+    Filter filter = 2;
+}

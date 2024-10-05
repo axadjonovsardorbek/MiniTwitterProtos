@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = "genproto/orders";
+
+package orders;
+
+import "common3.proto";
+
+service OrdersService{
+    rpc Create(OrdersCreateReq) returns(ById);
+    rpc GetById(ById) returns(OrdersRes);
+    rpc GetAll(OrdersGetAllReq) returns(OrdersGetAllRes);
+    rpc Update(OrdersUpdateReq) returns(Void);
+    rpc Delete(ById) returns(Void);
+    rpc OrdersForCourier(OrdersGetAllReq) returns(OrdersGetAllRes);
+}
+
+message OrdersRes{
+    string id = 1;
+    string user_id = 2;
+    string courier_id = 3;
+    string promocode_id = 4;
+    string status = 5;
+    string delivery_type = 6;
+    string payment_type = 7;
+    int32 total_amount = 8;
+    Location location = 9;
+    string delivery_schedule = 10;
+}
+
+message OrdersCreateReq{
+    string user_id = 1;
+    string courier_id = 2;
+    string promocode_id = 3;
+    string status = 4;
+    string delivery_type = 5;
+    string payment_type = 6;
+    int32 total_amount = 7;
+    Location location = 8;
+}
+
+message OrdersGetAllRes{
+    repeated OrdersRes orders = 1;
+}
+
+message OrdersUpdateReq{
+    string id = 1;
+    string courier_id = 2;
+    string status = 3;
+}
+
+message OrdersGetAllReq{
+    string status = 1;
+    string user_id = 2;
+    string courier_id = 3;
+    Filter filter = 4;
+}

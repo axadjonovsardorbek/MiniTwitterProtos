@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "genproto/cafe";
+
+package cafe;
+
+import "common2.proto";
+
+service PromocodesService{
+    rpc Create(PromocodesCreateReq) returns(ById);
+    rpc GetById(ById) returns(PromocodesRes);
+    rpc GetAll(PromocodesGetAllReq) returns(PromocodesGetAllRes);
+    rpc Update(PromocodesRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message PromocodesRes{
+    string id = 1;
+    string code = 2;
+    string discount_type = 3;
+    int32 discount_value = 4;
+    int32 usage_limit = 5;
+    string start_date = 6;
+    string end_date = 7;
+    int32 min_order_value = 8;
+    bool is_public = 9;
+    string user_id = 10;
+}
+
+message PromocodesCreateReq{
+    string code = 1;
+    string discount_type = 2;
+    int32 discount_value = 3;
+    int32 usage_limit = 4;
+    string start_date = 5;
+    string end_date = 6;
+    int32 min_order_value = 7;
+    bool is_public = 8;
+    string user_id = 9;
+}
+
+message PromocodesGetAllReq{
+    string user_id = 1;
+    Filter filter = 3;
+}
+
+message PromocodesGetAllRes{
+    repeated PromocodesRes promocodes = 1;
+    int32 count = 2;
+}

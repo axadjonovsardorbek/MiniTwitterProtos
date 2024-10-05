@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option go_package = "genproto/auth";
+
+package auth;
+
+import "common1.proto";
+
+service AuthService {
+    rpc SendConfirmationCode(UserVerifyReq) returns(Void);
+    rpc RegisterUser(UserVerifyReq) returns(TokenRes);
+    rpc LoginUser(UserVerifyReq) returns(TokenRes);
+    rpc Register(LoginReq) returns(Void);
+    rpc Login(LoginReq) returns(TokenRes);
+    rpc Update(UserRes) returns(Void);
+    rpc Delete(DeleteReq) returns(Void);
+    rpc GetById(ById) returns(ProfileRes);
+    rpc GetAll(UserGetAllReq) returns(UserGetAllRes);
+    rpc ChangePassword(ChangePasswordReq) returns(Void);
+    rpc ResetPassword(ResetPasswordReq) returns(Void);
+}
+
+message UserRes {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    string role = 5;
+}
+
+message ProfileRes {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    string role = 5;
+}
+
+message UserVerifyReq {
+    string phone_number = 1;
+    string confirmation_code = 2; 
+    string role = 3;
+}
+
+message LoginReq {
+    string phone_number = 1;
+    string password = 2;
+    string role = 3;
+}
+
+message UserGetAllReq {
+    string role = 1;
+    Filter filter = 2;
+}
+
+message UserGetAllRes {
+    repeated ProfileRes users = 1;
+    int32 count = 2;
+}
+
+message ChangePasswordReq {
+    string id = 1;
+    string old_password = 2;
+    string new_password = 3;
+}
+
+message ResetPasswordReq {
+    string phone = 1;
+    string new_password = 2;
+    string confirmation_code = 3;
+    string role = 4;
+}
+
+message DeleteReq {
+    string id = 1;
+    string role = 2;
+}
+
+message TokenRes{
+    string access_token = 1;
+    string refresh_token = 2;
+    string role = 3;
+    string id = 4;
+}

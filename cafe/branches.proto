@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "genproto/cafe";
+
+package cafe;
+
+import "common2.proto";
+
+service BranchesService{
+    rpc Create(BranchesCreateReq) returns(Void);
+    rpc GetById(ById) returns(BranchesRes);
+    rpc GetAll(BranchesGetAllReq) returns(BranchesGetAllRes);
+    rpc Update(BranchesRes) returns(Void);
+    rpc Delete(ById) returns(Void);
+}
+
+message BranchesRes{
+    string id = 1;
+    string name = 2;
+    string phone_number = 3;
+    string opening_hours = 4;
+    Location location = 5;
+}
+
+message BranchesCreateReq{
+    string name = 1;
+    string phone_number = 2;
+    string opening_hours = 3;
+    Location location = 4;
+}
+
+message BranchesGetAllRes{
+    repeated BranchesRes branches = 1;
+    int32 count = 2;
+}
+
+message BranchesGetAllReq{
+    Filter filter = 1;
+}
