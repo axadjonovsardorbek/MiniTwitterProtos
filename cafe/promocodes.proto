@@ -7,7 +7,7 @@ package cafe;
 import "common2.proto";
 
 service PromocodesService{
-    rpc Create(PromocodesCreateReq) returns(ById);
+    rpc Create(PromocodesCreateReq) returns(Void);
     rpc GetById(ById) returns(PromocodesRes);
     rpc GetAll(PromocodesGetAllReq) returns(PromocodesGetAllRes);
     rpc Update(PromocodesRes) returns(Void);

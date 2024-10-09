@@ -7,11 +7,10 @@ package cafe;
 import "common2.proto";
 
 service PromocodeUsagesService{
-    rpc Create(PromocodeUsagesCreateReq) returns(ById);
+    rpc Create(PromocodeUsagesCreateReq) returns(Void);
     rpc GetById(ById) returns(PromocodeUsagesRes);
     rpc GetAll(PromocodeUsagesGetAllReq) returns(PromocodeUsagesGetAllRes);
     rpc Update(PromocodeUsagesRes) returns(Void);
-    rpc Delete(ById) returns(Void);
 }
 
 message PromocodeUsagesRes{

@@ -17,10 +17,12 @@ service UserLocationsService{
 message UserLocationsRes{
     string id = 1;
     Location location = 2;
+    string user_id = 3;
 }
 
 message UserLocationsCreateReq{
     Location location = 1;
+    string user_id = 2;
 }
 
 message UserLocationsGetAllRes{
