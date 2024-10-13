@@ -10,7 +10,6 @@ service PromocodeUsagesService{
     rpc Create(PromocodeUsagesCreateReq) returns(Void);
     rpc GetById(ById) returns(PromocodeUsagesRes);
     rpc GetAll(PromocodeUsagesGetAllReq) returns(PromocodeUsagesGetAllRes);
-    rpc Update(PromocodeUsagesRes) returns(Void);
 }
 
 message PromocodeUsagesRes{
