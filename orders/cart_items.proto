@@ -12,6 +12,7 @@ service CartItemsService{
     rpc GetAll(CartItemsGetAllReq) returns(CartItemsGetAllRes);
     rpc Update(CartItemsUpdateReq) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc GetTotalAmount(GetTotalAmountReq) returns(GetTotalAmountRes);
 }
 
 message CartItemsRes{
@@ -42,4 +43,13 @@ message CartItemsUpdateReq{
 message CartItemsGetAllReq{
     string user_id = 1;
     string cart_id = 2;
+}
+
+message GetTotalAmountReq{
+    string user_id = 1;
+    string cart_id = 2;
+}
+
+message GetTotalAmountRes{
+    int64 total_amount = 1;
 }

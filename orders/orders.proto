@@ -26,6 +26,7 @@ message OrdersRes{
     int32 total_amount = 8;
     Location location = 9;
     string delivery_schedule = 10;
+    string created_at = 11;
 }
 
 message OrdersCreateReq{
@@ -41,6 +42,7 @@ message OrdersCreateReq{
 
 message OrdersGetAllRes{
     repeated OrdersRes orders = 1;
+    int32 count = 2;
 }
 
 message OrdersUpdateReq{

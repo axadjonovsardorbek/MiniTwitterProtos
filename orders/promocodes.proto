@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-option go_package = "genproto/cafe";
+option go_package = "genproto/orders";
 
-package cafe;
+package orders;
 
-import "common2.proto";
+import "common3.proto";
 
 service PromocodesService{
     rpc Create(PromocodesCreateReq) returns(Void);

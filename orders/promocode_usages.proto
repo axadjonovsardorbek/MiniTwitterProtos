@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-option go_package = "genproto/cafe";
+option go_package = "genproto/orders";
 
-package cafe;
+package orders;
 
-import "common2.proto";
+import "common3.proto";
 
 service PromocodeUsagesService{
     rpc Create(PromocodeUsagesCreateReq) returns(Void);
@@ -27,7 +27,7 @@ message PromocodeUsagesCreateReq{
 
 message PromocodeUsagesGetAllReq{
     string user_id = 1;
-    Filter filter = 3;
+    Filter filter = 2;
 }
 
 message PromocodeUsagesGetAllRes{

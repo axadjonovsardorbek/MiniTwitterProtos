@@ -10,7 +10,7 @@ message ById{
     string id = 1;
 }
 
-message Filter{
+message Filter {
     int32 limit = 1;
     int32 offset = 2;
 }
