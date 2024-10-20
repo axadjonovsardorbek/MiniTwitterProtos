@@ -17,10 +17,12 @@ service CategoriesService{
 message CategoriesRes{
     string id = 1;
     string name = 2;
+    string image_url = 3;
 }
 
 message CategoriesCreateReq{
     string name = 1;
+    string image_url = 2;
 }
 
 message CategoriesGetAllReq{
