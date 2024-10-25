@@ -23,6 +23,7 @@ message PromocodeUsagesCreateReq{
     string user_id = 1;
     string promocode_id = 2;
     int32 usage_count = 3;
+    int32 total_amount = 4;
 }
 
 message PromocodeUsagesGetAllReq{
