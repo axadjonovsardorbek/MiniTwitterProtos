@@ -12,6 +12,7 @@ service PromocodesService{
     rpc GetAll(PromocodesGetAllReq) returns(PromocodesGetAllRes);
     rpc Update(PromocodesRes) returns(Void);
     rpc Delete(ById) returns(Void);
+    rpc CheckPromocode(PromocodeCheckReq) returns(ById);
 }
 
 message PromocodesRes{
@@ -47,4 +48,9 @@ message PromocodesGetAllReq{
 message PromocodesGetAllRes{
     repeated PromocodesRes promocodes = 1;
     int32 count = 2;
+}
+
+message PromocodeCheckReq{
+    string code = 1;
+    string user_id = 2;
 }
