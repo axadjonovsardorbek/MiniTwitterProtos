@@ -16,7 +16,7 @@ service CartsService{
 
 message CartsRes{
     string id = 1;
-    string user_id = 2;
+    UserRes user = 2;
     int64 total_amount = 3;
 }
 

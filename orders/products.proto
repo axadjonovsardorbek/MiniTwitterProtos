@@ -5,6 +5,7 @@ option go_package = "internal/genproto/orders";
 package orders;
 
 import "common3.proto";
+import "categories.proto";
 
 service ProductsService{
     rpc Create(ProductsCreateReq) returns(ById);
@@ -16,7 +17,7 @@ service ProductsService{
 
 message ProductsRes{
     string id = 1;
-    string category_id = 2;
+    CategoriesRes category = 2;
     string name = 3;
     string description = 4;
     int32 price = 5;

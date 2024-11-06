@@ -20,3 +20,11 @@ message Location {
     double longitude = 2; 
     string address = 3;
 }
+
+message UserRes {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string phone_number = 4;
+    string role = 5;
+}

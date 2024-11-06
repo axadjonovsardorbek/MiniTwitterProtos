@@ -5,6 +5,7 @@ option go_package = "internal/genproto/orders";
 package orders;
 
 import "common3.proto";
+import "products.proto";
 
 service CartItemsService{
     rpc Create(CartItemsCreateReq) returns(Void);
@@ -18,7 +19,7 @@ service CartItemsService{
 message CartItemsRes{
     string id = 1;
     string user_id = 2;
-    string product_id = 3;
+    ProductsRes product = 3;
     string cart_id = 4;
     int32 quantity = 5;
 }

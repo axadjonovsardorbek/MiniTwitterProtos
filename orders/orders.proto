@@ -5,6 +5,7 @@ option go_package = "internal/genproto/orders";
 package orders;
 
 import "common3.proto";
+import "promocodes.proto";
 
 service OrdersService{
     rpc Create(OrdersCreateReq) returns(ById);
@@ -17,9 +18,9 @@ service OrdersService{
 
 message OrdersRes{
     string id = 1;
-    string user_id = 2;
-    string courier_id = 3;
-    string promocode_id = 4;
+    UserRes user = 2;
+    UserRes courier = 3;
+    PromocodesRes promocode = 4;
     string status = 5;
     string delivery_type = 6;
     string payment_type = 7;

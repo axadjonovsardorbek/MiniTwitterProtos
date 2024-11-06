@@ -25,7 +25,7 @@ message PromocodesRes{
     string end_date = 7;
     int32 min_order_value = 8;
     bool is_public = 9;
-    string user_id = 10;
+    UserRes user = 10;
 }
 
 message PromocodesCreateReq{

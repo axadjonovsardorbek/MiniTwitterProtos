@@ -5,6 +5,7 @@ option go_package = "internal/genproto/orders";
 package orders;
 
 import "common3.proto";
+import "promocodes.proto";
 
 service PromocodeUsagesService{
     rpc Create(PromocodeUsagesCreateReq) returns(Void);
@@ -14,8 +15,8 @@ service PromocodeUsagesService{
 
 message PromocodeUsagesRes{
     string id = 1;
-    string user_id = 2;
-    string promocode_id = 3;
+    UserRes user = 2;
+    PromocodesRes promocode = 3;
     int32 usage_count = 4;
 }
 
